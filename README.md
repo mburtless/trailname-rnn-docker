@@ -14,13 +14,13 @@ This Docker image extends the torch rnn [Docker image](https://github.com/crisba
 
 To pull from Docker Hub:
 ```
-docker pull mburtless\trailname-rnn-docker
+docker pull mburtless/trailname-rnn-docker
 ```
 
 ### Running
 
 ```
-sudo docker run -p 6788:6788 mburtless\trailname-rnn-docker
+sudo docker run -p 6788:6788 -d mburtless/trailname-rnn-docker
 ```
 
 You can then browse to ```http://localhost:6788``` to test the api.  Simply enter any start text and press submit to sample the model for some new trail names.
