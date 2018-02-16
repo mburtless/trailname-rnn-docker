@@ -6,13 +6,15 @@ According to thru-hiking tradition, a trail name is the nickname, either chosen 
 
 I first found out about this after running into a few AT hikers while cycling the GAP trail.  I found the idea so rad that I was inspired to get a trail name of my very own.  However, since I don't have any cool thru-hiking buddies, I had no one to bestow me with one.  What's a lazy computer nerd/cyclist to do?
 
-Enter the Recursive Neural Networks!  After scraping several sites, I generated a corpus of 10k plus trail names.  Using this, I was able to train the model provided by [torch rnn](https://github.com/jcjohnson/torch-rnn) to generate new trail names on demand.  I threw my trained model on this awesome torch rnn [Docker image](https://github.com/crisbal/docker-torch-rnn), threw [OpenResty](https://openresty.org/en/) in front of it to create an API and packaged it up into a new container.
+Enter the Recursive Neural Networks!  After scraping several sites, I generated a corpus of 10k plus trail names.  Using this, I was able to train the model provided by [torch rnn](https://github.com/jcjohnson/torch-rnn) to generate new trail names on demand.
+
+This Docker image extends the torch rnn [Docker image](https://github.com/crisbal/docker-torch-rnn) and contains my model, as well as [OpenResty](https://openresty.org/en/) to provide an API.
 
 ## Getting Started
 
 To pull from Docker Hub:
 ```
-docker pull mburtless\trailname-rnn-docker:latest
+docker pull mburtless\trailname-rnn-docker
 ```
 
 ### Running
