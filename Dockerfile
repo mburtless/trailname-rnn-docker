@@ -9,7 +9,8 @@ RUN apt-get update && apt-get -y install \
   libpcre3-dev \
   libssl-dev \
   #perl \
-  wget
+  wget \
+  gettext
 
 # Compile openresty from source with luajit
 RUN \
@@ -34,17 +35,19 @@ RUN mkdir /root/torch-rnn/cv
 COPY trailnamemodel.t7 /root/torch-rnn/cv/trailnamemodel.t7
 
 # Copy our nginx and lua server conf
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx.conf.template /etc/nginx/nginx.conf.template
 COPY serve.lua /root/torch-rnn/serve.lua
+COPY run_nginx.sh /etc/nginx/run_nginx.sh
 
 # Copy basic api testing page
 COPY index.html /usr/local/openresty/nginx/html/index.html
 
-# Expose web port
+# Define and expose default port
+ENV PORT=6788
 EXPOSE 6788
 
 # Expose torch and nginx volumes
 VOLUME ["/root/torch-rnn", "/etc/nginx"]
 
 # Define the default command.
-CMD ["nginx", "-c", "/etc/nginx/nginx.conf"]
+CMD ["sh", "/etc/nginx/run_nginx.sh"]

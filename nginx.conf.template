@@ -5,8 +5,9 @@ events{}
 http {
         lua_code_cache on;
         init_by_lua_file '/root/torch-rnn/serve.lua';
+		lua_package_path "/root/torch-rnn/?.lua;;";
         server {
-                listen 6788;
+                listen ${PORT};
                 lua_code_cache on;
                 lua_need_request_body on;
                 client_body_buffer_size 10M;

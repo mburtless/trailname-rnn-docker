@@ -4,7 +4,7 @@ cjson = require 'cjson'
 require 'LanguageModel'
 
 -- model
-modelPath = './cv/trailnamemodel.t7'
+modelPath = '/root/torch-rnn/cv/trailnamemodel.t7'
 -- torch options
 opt = {}
 opt.gpu = -1
